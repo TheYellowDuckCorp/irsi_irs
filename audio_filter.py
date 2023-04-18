@@ -1,4 +1,3 @@
-
 # Libraries
 import matplotlib.pyplot as plt
 import numpy as np
@@ -56,19 +55,19 @@ def audio_filter():
 
     # Filtering working on FFT domain
     for i,f in enumerate (freq):
-        if f > 5900 and f < 6100:
-            fft_spectrum[1] = 0.0
-    noiseless_signal=np.fft.irfft(fft_spectrum)
+        if f > 2500 and f < 8500:
+            fft_spectrum[i] = 0.0
+    noiseless_signal = np.fft.irfft(fft_spectrum)
     # Audio plot
     plt.plot (time, noiseless_signal, 'r')
     plt.xlabel("time, signal")
     plt.tight_layout()
     plt.show()
+    
+    wavfile.write("Noisy Audio.wav", sampFreq, signal)
+    wavfile.write("Noisless Audio.wav", sampFreq, noiseless_signal)
+    playsound("Noisy Audio.wav")
+    playsound("Noisless Audio.wav")
 
-    wavfile.write("noisy Audio.wav", sampFreq, signal)
-    wavfile.write("noisless Audio.wav", sampFreq, noiseless_signal)
-    playsound("noisy Audio.wav")
-    playsound("noisless Audio.wav")
-
-    if __name__=="__main__":
-        audio_filter()
+if __name__ == "__main__":
+    audio_filter()
