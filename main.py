@@ -1,6 +1,6 @@
 from filter import fir_filter, iir_filter, fourier_transform
 from scipy.signal import freqz
-from numpy import cos, sin, pi, absolute, arange
+from numpy import sin, pi
 import numpy as np
 from matplotlib import pyplot as plt
 

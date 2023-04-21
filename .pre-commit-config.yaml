@@ -25,7 +25,4 @@ repos:
         name: Run pydocstyle
         language: system
         types: [python]
-        entry: pydocstyle
-
-
-     
+        entry: pydocstyle  
