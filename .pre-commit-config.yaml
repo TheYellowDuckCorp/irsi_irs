@@ -1,31 +1,31 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+  - repo: local
+    # rev: v4.0.1
     hooks:
-      - id: trailing-whitespace
-      - id: check-executables-have-shebangs
-      - id: debug-statements
-      - id: check-merge-conflict
-      - id: name-tests-test
-        args: ['--django']
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
-        additional_dependencies: [flake8-docstrings]
-        args: [--max-line-length=88, '--ignore=D400, D401, I003, W503, I004', '--extend-ignore=E203']
-  - repo: https://github.com/psf/black
-    rev: 21.10b0
-    hooks:
-      - id: black
-  - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.0
-    hooks:
-      - id: bandit
-        args: ['-iii', '-ll', '-s=B308,B703,B605,B301']
-  - repo: https://github.com/pycqa/isort
-    rev: 5.10.0
-    hooks:
+      - id: format-code
+        name: Run black
+        language: system
+        types: [python]
+        entry: black
+      - id: lint-python-code
+        args: ["--max-line-length=88","--extend-ignore=E205, W503, W605","--exclude=.venv"]
+        name: Run flake8
+        descrption: "Apply a lintern to python code"
+        entry: flake8
+        language: system
+        types: [python]
       - id: isort
-        args: ["--profile", "black", "--filter-files"]
-        additional_dependencies: ["toml"]
+        args: ["--profile=black"]
+        name: Run isort
+        language: system
+        types: [python]
+        entry: isort
+      - id: pydocstyle
+        args: ["--convention=google","--add-ignore=D100,D101,D102,D103,D104,D105,D106,D107"]
+        name: Run pydocstyle
+        language: system
+        types: [python]
+        entry: pydocstyle
+
+
+     
