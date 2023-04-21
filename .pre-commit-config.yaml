@@ -1,6 +1,5 @@
 repos:
   - repo: local
-    # rev: v4.0.1
     hooks:
       - id: format-code
         name: Run black
@@ -8,21 +7,21 @@ repos:
         types: [python]
         entry: black
       - id: lint-python-code
-        args: ["--max-line-length=88","--extend-ignore=E205, W503, W605","--exclude=.venv"]
+        args: ['--max-line-length=88', '--extend-ignore=E205, W503, W605', '--exclude=.venv']
         name: Run flake8
-        descrption: "Apply a lintern to python code"
+        description: 'Apply a linter to python code'
         entry: flake8
         language: system
         types: [python]
       - id: isort
-        args: ["--profile=black"]
+        args: ['--profile=black']
         name: Run isort
         language: system
         types: [python]
         entry: isort
       - id: pydocstyle
-        args: ["--convention=google","--add-ignore=D100,D101,D102,D103,D104,D105,D106,D107"]
+        args: ['--convention=google', '--add-ignore=D100,D101,D102,D103,D104,D105,D106,D107']
         name: Run pydocstyle
         language: system
         types: [python]
-        entry: pydocstyle  
+        entry: pydocstyle
