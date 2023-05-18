@@ -1,5 +1,5 @@
 from scipy.signal import kaiserord, lfilter, firwin, iirfilter, filtfilt 
-from scipy.fft import fft, fftfreq
+from scipy.fftpack import fft, fftfreq
 from scipy.fftpack import fftshift
 def fourier_transform(signal, sample_rate=44100, duration=5):   
     # Number of samples
